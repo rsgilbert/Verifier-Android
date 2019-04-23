@@ -33,7 +33,7 @@ public class GeneratorActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         try {
                             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-                            Bitmap bitmap = barcodeEncoder.encodeBitmap("Pepsi", BarcodeFormat.CODE_128, 200, 200);
+                            Bitmap bitmap = barcodeEncoder.encodeBitmap("Cocacola", BarcodeFormat.CODE_128, 200, 150);
                             ImageView barCode = findViewById(R.id.barCode);
                             barCode.setImageBitmap(bitmap);
                         } catch (Exception e) {

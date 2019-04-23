@@ -36,12 +36,13 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
-                        integrator.setDesiredBarcodeFormats(IntentIntegrator.CODE_128);
+                        integrator.setDesiredBarcodeFormats(IntentIntegrator.ONE_D_CODE_TYPES);
                         integrator.setPrompt("Scanning barcode");
                         integrator.setCameraId(0);
                         integrator.setBeepEnabled(true);
                         integrator.setBarcodeImageEnabled(true);
                         integrator.initiateScan();
+
                     }
                 }
         );
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "Changing to sign in", Toast.LENGTH_LONG);
                 Intent intent = new Intent(MainActivity.this, SigninActivity.class);
                 startActivity(intent);
             }

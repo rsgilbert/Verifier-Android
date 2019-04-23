@@ -14,6 +14,7 @@ public class SigninActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
+        signinButton = findViewById(R.id.signinButton);
 
         signinButton.setOnClickListener(new View.OnClickListener() {
             @Override
