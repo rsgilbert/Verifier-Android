@@ -14,12 +14,17 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity {
 
     Button btn_scan;
     TextView text_result;
     ImageView status;
+
+    String[] companies = {"Safi", "Tecno", "Cocacola"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,13 +73,20 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Scanned " + result.getContents(), Toast.LENGTH_LONG).show();
                 String scanText = result.getContents();
 
-
-                GeneratorActivity generatorActivity = new GeneratorActivity();
-                if (generatorActivity.companies.contains(scanText)) {
+                boolean found = false;
+                for(String companyName : companies){
+                    if (companyName.equals(scanText)) {
+                        found = true;
+                        text_result.setText("Success, The product was manufactured by " + scanText);
+                        status.setImageResource(R.drawable.tick);
+                        return;
+                    }
+                }
+                if(found){
                     text_result.setText("Success, The product was manufactured by " + scanText);
                     status.setImageResource(R.drawable.tick);
-
-                } else {
+                }
+                else {
                     text_result.setText("Failed, This product is not authentic");
                     status.setImageResource(R.drawable.cross);
                 }
